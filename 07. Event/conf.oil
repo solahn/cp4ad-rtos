@@ -4,7 +4,7 @@ CPU mySystem {
 		USERESSCHEDULER = TRUE;
 		CPU_DATA = AVR8 {
 			//Write the code below.
-			
+			MULTI_STACK = TRUE;
 		};
 		MCU_DATA = MEGA {
 			MODEL = MEGA_328p;
@@ -27,7 +27,8 @@ CPU mySystem {
 	};
 	
 	//Write the code below.
-
+	EVENT Event1 { MASK = AUTO; };
+	EVENT Event2 { MASK = AUTO; };
 	
 	TASK Task1 {
 		PRIORITY = 1;
@@ -40,14 +41,15 @@ CPU mySystem {
 	TASK Task2 {
 		PRIORITY = 2;
 		//Write the code below.
-
-
+		STACK = PRIVATE {
+			SIZE = 512;
+		};
 		SCHEDULE = FULL;
 		AUTOSTART = FALSE;
         ACTIVATION = 1;
         //Write the code below.
-
-
+        EVENT = Event1;
+		EVENT = Event2;
 	};
 	
     COUNTER counter1 {

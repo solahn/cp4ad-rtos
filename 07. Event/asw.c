@@ -16,10 +16,10 @@ ISR2(ButtonISR)
     a0 = analogRead(A0); // read ADC value
     if (a0 < 50) {	// UP
     	//Write the code below.
-
+        SetEvent(Task2, Event1);
     } else if (a0 < 200) { // DOWN
     	//Write the code below.
-
+        SetEvent(Task2, Event2);
     } else if (a0 < 380) { // LEFT
         ;
     } else if (a0 < 520) { // RIGHT
@@ -43,7 +43,21 @@ TASK(Task1)
 TASK(Task2)
 {
 	//Write the code below.
+	EventMaskType mask;
+	printfSerial("Task2 Begins...");
+	printfSerial("Task2 Waits...");
+	WaitEvent(Event1 | Event2);
+	printfSerial("Task2 Wakes Up...");
+	GetEvent(Task2, &mask);
+	if (mask & Event1) {
+	    printfSerial("[Event1]");
+	    ClearEvent(Event1);
+	}
+	if (mask & Event2) {
+	    printfSerial("[Event2]");
+	    ClearEvent(Event2);
+	}
 
-
+	printfSerial("Task2 Finishes...");
 	TerminateTask();
 }

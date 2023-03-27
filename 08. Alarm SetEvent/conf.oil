@@ -78,11 +78,15 @@ CPU mySystem {
     
     //Write the code below.
 	ALARM alarm3 {
-
-
-
-
-
+		COUNTER = counter1;
+		ACTION = SETEVENT {
+			TASK = Task2;
+			EVENT = Event1;
+		};
+		AUTOSTART = TRUE {
+			ALARMTIME = 7;
+			CYCLETIME = 20;
+		};
 	};
     
 	ISR TimerISR {

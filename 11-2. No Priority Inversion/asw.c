@@ -32,8 +32,7 @@ TASK(TaskH)
 	printfSerial("TaskH : Try Lock(S1). ");
 	//Write the code below.
 	//GetMutex(&s1);
-
-
+	GetResource(S1);
 	printfSerial("TaskH : Get Lock(S1). ");
 
 	mdelay(3000);
@@ -41,7 +40,7 @@ TASK(TaskH)
 	printfSerial("TaskH : Release Lock(S1). ");
 	//Write the code below.
 	//ReleaseMutex(&s1);
-
+	ReleaseResource(S1);
 
 	mdelay(1000);
 
@@ -65,7 +64,7 @@ TASK(TaskL)
 	printfSerial("TaskL : Try Lock(S1). ");
 	//Write the code below.
 	//GetMutex(&s1);
-
+	GetResource(S1);
 	printfSerial("TaskL : Get Lock(S1). ");
 
 	mdelay(9000);
@@ -73,7 +72,7 @@ TASK(TaskL)
 	printfSerial("TaskL : Release Lock(S1). ");
 	//Write the code below.
 	//ReleaseMutex(&s1);
-
+	ReleaseResource(S1);
 	mdelay(1000);
 	printfSerial("<TaskL ends.> ");
 	TerminateTask();

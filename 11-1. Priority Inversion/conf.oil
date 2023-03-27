@@ -27,11 +27,11 @@ CPU mySystem {
 	};
     
     //Write the code below.
-    
+    EVENT Event1 { MASK = AUTO; };
     
     TASK TaskH {
     	//Write the code below.
-        PRIORITY = ;       
+        PRIORITY = 3;       
         STACK = PRIVATE{
             SIZE = 256;
         };
@@ -39,12 +39,12 @@ CPU mySystem {
         AUTOSTART = FALSE;
         ACTIVATION = 1;
         //Write the code below.
-        
+        EVENT = Event1;
     };
     
     TASK TaskM {
     	//Write the code below.
-        PRIORITY = ;       
+        PRIORITY = 2;       
         STACK = PRIVATE{
             SIZE = 256;
         };
@@ -55,7 +55,7 @@ CPU mySystem {
         
     TASK TaskL {
     	//Write the code below.
-        PRIORITY = ;       
+        PRIORITY = 1;       
         STACK = PRIVATE{
             SIZE = 256;
         };
@@ -63,7 +63,7 @@ CPU mySystem {
         AUTOSTART = FALSE;
         ACTIVATION = 1;
         //Write the code below.
-       
+        EVENT = Event1;
     };
     
 	ISR TimerISR {

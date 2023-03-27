@@ -14,8 +14,9 @@ TASK(Task1)
 
 	for (unsigned long i = 0; i < 1000000; i++) {
 		//Write the code below.
-
-
+		GetResource(S1);
+		shared++;
+		ReleaseResource(S1);
 	}
 	printfSerial("Added 1000000 to shared\n");
 	printfSerial("counter = %lu\n", shared);
@@ -28,8 +29,9 @@ TASK(Task2)
 	static unsigned long i = 0;
     if (i < 1000) {
     	//Write the code below.
-
-
+		GetResource(S1);
+    	shared++;
+    	ReleaseResource(S1);
     }
     else if (i == 1000) {
     	printfSerial("Added 1000 to shared\n");

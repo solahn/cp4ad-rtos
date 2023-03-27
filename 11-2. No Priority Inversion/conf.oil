@@ -29,8 +29,9 @@ CPU mySystem {
     //EVENT Event1 { MASK = AUTO; };
     
     //Write the code below.
-
-
+    RESOURCE S1 {
+        RESOURCEPROPERTY = STANDARD;
+    };
     
     TASK TaskH {
         PRIORITY = 3;       
@@ -42,8 +43,7 @@ CPU mySystem {
         ACTIVATION = 1;
         //EVENT = Event1;
         //Write the code below.
-
-
+        RESOURCE = S1;
     };
     
     TASK TaskM {
@@ -66,8 +66,7 @@ CPU mySystem {
         ACTIVATION = 1;
         //EVENT = Event1;
         //Write the code below.
-
-
+        RESOURCE = S1;
     };
     
 	ISR TimerISR {
